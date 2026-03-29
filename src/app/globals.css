@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@theme inline {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Modern gradients and effects */
+  --backgroundImage-glass: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+  --backgroundImage-glass-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+}
+
+@layer base {
+  :root {
+    /* Stunning Vibrant Light Mode Palette */
+    --background: #fdfdfd; /* Clean off-white */
+    --foreground: #0f172a; /* Slate 900 */
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
+    --primary: #6366f1; /* Indigo 500 */
+    --primary-foreground: #ffffff;
+    --secondary: #f1f5f9; /* Slate 100 */
+    --secondary-foreground: #0f172a;
+    --muted: #f8fafc; /* Slate 50 */
+    --muted-foreground: #64748b; /* Slate 500 */
+    --accent: #f1f5f9; /* Slate 100 */
+    --accent-foreground: #0f172a;
+    --destructive: #ef4444; /* Red 500 */
+    --destructive-foreground: #ffffff;
+    --border: #e2e8f0; /* Slate 200 */
+    --input: #e2e8f0;
+    --ring: #6366f1; /* Indigo 500 */
+
+    /* Beautiful Chart Colors */
+    --chart-1: #6366f1; /* Indigo */
+    --chart-2: #0ea5e9; /* Light Blue */
+    --chart-3: #10b981; /* Emerald */
+    --chart-4: #f43f5e; /* Rose */
+    --chart-5: #f59e0b; /* Amber */
+
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.12), transparent 30%), /* Indigo glow */
+      radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.12), transparent 30%), /* Sky blue glow */
+      radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.05), transparent 40%);  /* Soft rose center */
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-xl border border-white shadow-xl shadow-slate-200/50 relative overflow-hidden transition-all duration-300;
+  }
+  
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to bottom right, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-500;
+  }
+}
